@@ -1,0 +1,78 @@
+#compdef jitsu
+#autoload
+
+# nodejitsu jitsu zsh completion
+
+local -a _1st_arguments
+_1st_arguments=(
+  'install:To install a pre-built application'
+  'signup:To sign up for Nodejitsu'
+  'login:To log into Nodejitsu'
+  'deploy:Deploys current path to Nodejitsu'
+  'create:Creates a new application on Nodejitsu'
+  'list:Lists all applications for the current user'
+
+  'apps:Lists all applications for the current user'
+  'apps create:creates new app'
+  'apps list:list all apps'
+  'apps deploy:deploy application'
+  'apps view:args <name>'
+  'apps update <name>: update app'
+  'apps destroy <name>:destroy app'
+  'apps start <name>:start given app'
+  'apps restart <name>:restart given app'
+  'apps stop <name>:stop given app'
+
+  'logs:To show logs for your application'
+  
+  'env:allows you to set local environment variables for your application.'
+  'env list:list current environment configuration'
+  'env list <app>:description'
+  'env set <key> <value>:description'
+  'env get <key>:Lists all applications for the current user'
+  'env delete <key>:description'
+  'env clear:description'
+  
+  'config:edit your local jitsu configuration file'
+  'config list:list current configuration'
+  'config set <key> <value>:set new config property'
+  'config get <key>:get specfic config property'
+  'config delete <key>:delete specfic config property'
+  
+  'users:work with new or existing Nodejitsu user accounts'
+  'users create:create new user'
+  'users available <username>:description'
+  'users confirm <username> <inviteCode>:description'
+  'users forgot <username> <shake>:description'
+  'users logout:description'
+  'users changepassword:description'
+  'users whoami:description'
+  
+  'databases:commands that allow you to work with the database api'
+  'databases create <database type> <database name>:description'
+  'databases list:description'
+  'databases get <database name>:description'
+  'databases destroy <database name>:description'
+  
+  'snapshots:allow you to work with snapshots for your Applications on Nodejitsu.'
+  'snapshots create:description'
+  'snapshots list:description'
+  'snapshots list <app-name>:description'
+  'snapshots activate:description'
+  'snapshots activate <app-name>:description'
+  'snapshots destroy:description'
+  'snapshots destroy <app-name>:description'
+  
+  'logout:will log you off'
+)
+
+local expl
+local -a pkgs installed_pkgs
+
+_arguments \
+  '*:: :->subcmds' && return 0
+
+if (( CURRENT == 1 )); then
+  _describe -t commands "jitsu subcommand" _1st_arguments
+  return
+fi
